@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.lzh.weatherforecast.widget.TitleLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_132px"></com.lzh.weatherforecast.widget.TitleLayout>
+
+    <View
+        android:id="@+id/title_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1px"
+        android:background="@color/line_background" />
+
+    <RelativeLayout
+        android:id="@+id/icon_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_516px"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/size_231px"
+            android:layout_height="@dimen/size_231px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_123px"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_54px"
+            android:textColor="@color/color_80"
+            android:textSize="@dimen/size_36px" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/personalinfo_headimage_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1px"
+        android:background="@color/line_background" />
+
+    <RelativeLayout
+        android:id="@+id/developer"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_129px"
+        android:layout_below="@+id/birth_line"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/developer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_57px"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_48px" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1px"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/size_57px"
+        android:src="@color/line_background" />
+
+    <RelativeLayout
+        android:id="@+id/login_out_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_129px"
+        android:layout_below="@+id/birth_line"
+        android:background="@drawable/layout_select">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_57px"
+            android:text="@string/loginout"
+            android:textColor="@color/red_bg"
+            android:textSize="@dimen/size_48px" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/address_line"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_1px"
+        android:layout_below="@+id/addresslayout"
+        android:background="@color/line_background" />
+</LinearLayout>
+

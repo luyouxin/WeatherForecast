@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.lzh.weatherforecast.widget.TitleLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_132px" />
+
+    <EditText
+        android:id="@+id/key"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_96px"
+        android:layout_marginLeft="@dimen/size_57px"
+        android:layout_marginRight="@dimen/size_57px"
+        android:layout_marginTop="@dimen/size_57px"
+        android:background="@drawable/bg_floating"
+        android:drawableRight="@drawable/btn_del"
+        android:hint="@string/search_tips"
+        android:paddingLeft="@dimen/size_21px"
+        android:paddingRight="@dimen/size_21px" />
+
+    <TextView
+        android:id="@+id/title_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_21px"
+        android:layout_marginLeft="@dimen/size_57px"
+        android:layout_marginTop="@dimen/size_57px"
+        android:text="@string/choose_hotcity"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_48px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1px"
+        android:background="@color/line_background" />
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_57px"
+        android:layout_marginRight="@dimen/size_57px"
+        android:layout_marginTop="@dimen/size_21px"
+        android:listSelector="@color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none" />
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"></ListView>
+
+    <TextView
+        android:id="@+id/search_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_57px"
+        android:layout_marginTop="@dimen/size_57px"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_48px"
+        android:visibility="gone" />
+</LinearLayout>

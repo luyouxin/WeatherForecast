@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <com.lzh.weatherforecast.widget.TitleLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_132px"></com.lzh.weatherforecast.widget.TitleLayout>
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_layout"
+        android:layout_below="@+id/title_layout"
+        android:layout_marginBottom="@dimen/size_21px"
+        android:layout_marginLeft="@dimen/size_57px"
+        android:layout_marginRight="@dimen/size_57px"
+        android:horizontalSpacing="@dimen/size_21px"
+        android:listSelector="@color/transparent"
+        android:numColumns="2"
+        android:paddingTop="@dimen/size_21px"
+        android:scrollbars="none"
+        android:verticalSpacing="@dimen/size_21px" />
+
+    <RelativeLayout
+        android:id="@+id/add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_129px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/add_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_129px"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/size_48px"
+                android:layout_height="@dimen/size_48px"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_city_add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/add_city"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

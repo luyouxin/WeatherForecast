@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <com.lzh.weatherforecast.widget.TitleLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_132px"></com.lzh.weatherforecast.widget.TitleLayout>
+    <RelativeLayout
+        android:id="@+id/positive_comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/positive_comment_image"
+            android:layout_width="@dimen/size_231px"
+            android:layout_height="@dimen/size_231px"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_positive_comment_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/positive_comment_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_21px"
+            android:text="@string/positive_comment"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_45px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1px"
+        android:background="@color/dialog_line_bg" />
+
+    <RelativeLayout
+        android:id="@+id/suggest_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/suggest_image"
+            android:layout_width="@dimen/size_231px"
+            android:layout_height="@dimen/size_231px"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_suggest_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/suggest_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_21px"
+            android:text="@string/suggest"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_45px" />
+    </RelativeLayout>
+</LinearLayout>
