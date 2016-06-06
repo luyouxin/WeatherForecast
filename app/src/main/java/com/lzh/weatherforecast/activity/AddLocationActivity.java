@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,6 +27,7 @@ import com.lzh.weatherforecast.adapter.SearchCityAdapter;
 import com.lzh.weatherforecast.bean.CityInfo;
 import com.lzh.weatherforecast.db.DBManger;
 import com.lzh.weatherforecast.R;
+import com.lzh.weatherforecast.util.AppManager;
 import com.lzh.weatherforecast.util.DBUtil;
 import com.lzh.weatherforecast.util.TitleUtil;
 import com.lzh.weatherforecast.widget.CustomDialog;
@@ -80,6 +82,7 @@ public class AddLocationActivity extends Activity {
     }
 
     private void initView() {
+        AppManager.getAppManager().addActivity(this);
         type = getIntent().getStringExtra("type");
         dialog = new CustomDialog(this);
         dbManger = new DBManger(this);
@@ -104,6 +107,8 @@ public class AddLocationActivity extends Activity {
             public void OnClick() {
 
                 if (type.equals("main")) {
+                    Intent mainIntent = new Intent(AddLocationActivity.this, MainActivity.class);
+                    startActivity(mainIntent);
                     finish();
                 } else {
                     Intent intent = new Intent(AddLocationActivity.this, LocationActivity.class);
@@ -264,6 +269,27 @@ public class AddLocationActivity extends Activity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (type.equals("main")) {
+                Intent mainIntent = new Intent(AddLocationActivity.this, MainActivity.class);
+                startActivity(mainIntent);
+                finish();
+            } else {
+                Intent intent = new Intent(AddLocationActivity.this, LocationActivity.class);
+                startActivity(intent);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void showToast(String message) {

@@ -1,6 +1,7 @@
 package com.lzh.weatherforecast.activity;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.lzh.weatherforecast.bean.CityInfo;
@@ -22,7 +23,8 @@ public class WeatherDataImp implements IGetWeatherData {
     private static WeatherDataImp instance;
     private static Gson gson;
     private String headUrl = "http://weatherapi.market.xiaomi.com/wtr-v2/weather?";
-    private String footUrl = "&imei=529e2dd3d767bdd3595eec30dd481050&device=pisces&miuiVersion" +
+    private String imeiUrl = "&imei=";
+    private String footUrl = "&device=pisces&miuiVersion" +
             "=JXCCNBD20.0&modDevice=&source=miuiWeatherApp";
     private static final int ONERROR = 1;
 
@@ -39,9 +41,9 @@ public class WeatherDataImp implements IGetWeatherData {
     }
 
     @Override
-    public void getWeatherData(final List<CityInfo> list, final GetWeatherDataListener listener) {
+    public void getWeatherData(String imei, final List<CityInfo> list, final GetWeatherDataListener listener) {
         for (int i = 0; i < list.size(); i++) {
-            OkHttpClientManager.getInstance().getEnqueue(headUrl + "cityId=" + list.get(i).cityID + footUrl, new ResultCallback() {
+            OkHttpClientManager.getInstance().getEnqueue(headUrl + "cityId=" + list.get(i).cityID + imeiUrl + imei + footUrl, new ResultCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
                     listener.onGetWeatherDataError(ONERROR);
@@ -52,6 +54,7 @@ public class WeatherDataImp implements IGetWeatherData {
                     if (response.code() == 200) {
                         try {
                             listener.onGetWeatherDataSuccess(gson.fromJson(response.body().string(), RawWeatherData.class));
+                            Log.d("CESHI",response.body().string());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

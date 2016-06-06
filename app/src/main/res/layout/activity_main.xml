@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white"
+        android:background="@color/white"
         android:foregroundGravity="left"
         android:orientation="vertical">
 
@@ -73,6 +73,7 @@
         </RelativeLayout>
 
         <ListView
+            android:background="@color/white"
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

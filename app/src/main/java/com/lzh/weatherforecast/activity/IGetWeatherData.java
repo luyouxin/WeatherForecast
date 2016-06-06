@@ -8,5 +8,5 @@ import java.util.List;
  * Created by lzh on 2016/6/2.
  */
 public interface IGetWeatherData {
-    void getWeatherData(List<CityInfo> list, GetWeatherDataListener listener);
+    void getWeatherData(String imei,List<CityInfo>list, GetWeatherDataListener listener);
 }

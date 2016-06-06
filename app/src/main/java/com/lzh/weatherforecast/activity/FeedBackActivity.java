@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.lzh.weatherforecast.R;
+import com.lzh.weatherforecast.util.AppManager;
 import com.lzh.weatherforecast.util.TitleUtil;
 import com.lzh.weatherforecast.widget.TitleLayout;
 
@@ -28,6 +29,7 @@ public class FeedBackActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
+        AppManager.getAppManager().addActivity(this);
         titleLayout = (TitleLayout) findViewById(R.id.title_layout);
         positiveLayout = (RelativeLayout) findViewById(R.id.positive_comment_layout);
         suggestLayout = (RelativeLayout) findViewById(R.id.suggest_layout);
@@ -61,5 +63,11 @@ public class FeedBackActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
     }
 }

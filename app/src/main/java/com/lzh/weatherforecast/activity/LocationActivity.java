@@ -1,10 +1,12 @@
 package com.lzh.weatherforecast.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,6 +23,7 @@ import com.lzh.weatherforecast.bean.CityInfo;
 import com.lzh.weatherforecast.bean.LocationWeatherInfo;
 import com.lzh.weatherforecast.bean.RawWeatherData;
 import com.lzh.weatherforecast.db.DBManger;
+import com.lzh.weatherforecast.util.AppManager;
 import com.lzh.weatherforecast.util.PreferenceUtil;
 import com.lzh.weatherforecast.util.TitleUtil;
 import com.lzh.weatherforecast.widget.TitleLayout;
@@ -47,6 +50,7 @@ public class LocationActivity extends Activity implements View.OnClickListener, 
     private static final int PARSEJSON = 0x01;
     private static final int UPDATEGRIDVIEW = 0x02;
     private static final int DELETE = 0x03;
+    private String imei;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -100,7 +104,7 @@ public class LocationActivity extends Activity implements View.OnClickListener, 
     }
 
     private void initView() {
-        cityInfoList=new ArrayList<CityInfo>();
+        cityInfoList = new ArrayList<CityInfo>();
         titleUtil = new TitleUtil(this);
         titleUtil.initTitle();
         titleLayout = (TitleLayout) findViewById(R.id.title_layout);
@@ -113,6 +117,9 @@ public class LocationActivity extends Activity implements View.OnClickListener, 
     }
 
     private void initData() {
+        AppManager.getAppManager().addActivity(this);
+        TelephonyManager telephonyManager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+        imei = telephonyManager.getDeviceId();
         gson = new Gson();
         mList = new ArrayList<LocationWeatherInfo>();
         rawWeatherDataList = new ArrayList<RawWeatherData>();
@@ -148,7 +155,7 @@ public class LocationActivity extends Activity implements View.OnClickListener, 
 
 
     private void updateGridView(List<CityInfo> list) {
-        WeatherDataImp.getInstance().getWeatherData(list, this);
+        WeatherDataImp.getInstance().getWeatherData(imei, list, this);
     }
 
     @Override
@@ -193,5 +200,11 @@ public class LocationActivity extends Activity implements View.OnClickListener, 
 
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
     }
 }

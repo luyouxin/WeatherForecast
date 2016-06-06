@@ -19,7 +19,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +39,7 @@ import com.lzh.weatherforecast.bean.RawWeatherData;
 import com.lzh.weatherforecast.bean.SideSlipInfo;
 import com.lzh.weatherforecast.db.DBManger;
 import com.lzh.weatherforecast.services.LocationService;
+import com.lzh.weatherforecast.util.AppManager;
 import com.lzh.weatherforecast.util.DBUtil;
 import com.lzh.weatherforecast.util.PreferenceUtil;
 import com.lzh.weatherforecast.util.TitleUtil;
@@ -72,18 +75,21 @@ public class MainActivity extends AppCompatActivity implements GetDBCityInfoList
     private FragmentPagerAdapter adapter;
     private HashMap<String, List<FutureWeather>> map;
     private List<FutureWeather> futureWeathers;
+    private String imei;
+    private long mExitTime = 0;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
 
             switch (msg.what) {
                 case GETDBSUCCESS:
-                    WeatherDataImp.getInstance().getWeatherData(cityInfoList, MainActivity.this);
+                    WeatherDataImp.getInstance().getWeatherData(imei, cityInfoList, MainActivity.this);
                     break;
                 case UPDATE:
                     Fragment fragment = new WeatherFragment();
                     fragmentList.add(fragment);
                     rawWeatherDataList.add((RawWeatherData) msg.obj);
+                    viewPager.setOffscreenPageLimit(0);
                     titleTextView.setText(rawWeatherDataList.get(viewPager.getCurrentItem()).aqi.city);
                     adapter.notifyDataSetChanged();
                     ((WeatherFragment) fragmentList.get(viewPager.getCurrentItem())).initData(rawWeatherDataList.get(viewPager.getCurrentItem()));
@@ -194,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements GetDBCityInfoList
                     Intent addLocationIntent = new Intent(MainActivity.this, AddLocationActivity.class);
                     addLocationIntent.putExtra("type", "main");
                     startActivity(addLocationIntent);
+                    finish();
                 }
                 if (position == 1) {
                     Intent locationIntent = new Intent(MainActivity.this, LocationActivity.class);
@@ -259,6 +266,9 @@ public class MainActivity extends AppCompatActivity implements GetDBCityInfoList
     }
 
     private void initData() {
+        AppManager.getAppManager().addActivity(this);
+        TelephonyManager telephonyManager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+        imei = telephonyManager.getDeviceId();
         mList = new ArrayList<SideSlipInfo>();
         SideSlipInfo addSideSlip = new SideSlipInfo(R.drawable.ic_add_location, getResources().getString(R.string.add_locaton));
         SideSlipInfo locationSideSlip = new SideSlipInfo(R.drawable.ic_setting_location, getResources().getString(R.string.location));
@@ -330,6 +340,20 @@ public class MainActivity extends AppCompatActivity implements GetDBCityInfoList
         // 启动分享GUI
         oks.show(this);
         ShareSDK.registerService(Socialization.class);
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private class MyAdapter extends FragmentPagerAdapter {

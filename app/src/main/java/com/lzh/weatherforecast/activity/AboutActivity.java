@@ -3,20 +3,24 @@ package com.lzh.weatherforecast.activity;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lzh.weatherforecast.R;
+import com.lzh.weatherforecast.util.AppManager;
 import com.lzh.weatherforecast.util.TitleUtil;
 import com.lzh.weatherforecast.widget.TitleLayout;
 
 /**
  * Created by lzh on 2016/5/9.
  */
-public class AboutActivity extends Activity {
+public class AboutActivity extends Activity implements View.OnClickListener {
     private TextView versionTextView, developerTextView;
     private TitleLayout titleLayout;
     private PackageInfo packageInfo;
     private TitleUtil titleUtil;
+    private RelativeLayout loginOutLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +35,11 @@ public class AboutActivity extends Activity {
         versionTextView = (TextView) findViewById(R.id.version);
         developerTextView = (TextView) findViewById(R.id.developer_text);
         titleLayout = (TitleLayout) findViewById(R.id.title_layout);
+        loginOutLayout = (RelativeLayout) findViewById(R.id.login_out_layout);
     }
 
     private void initData() {
+        AppManager.getAppManager().addActivity(this);
         titleUtil = new TitleUtil(this);
         titleUtil.initTitle();
         try {
@@ -53,5 +59,21 @@ public class AboutActivity extends Activity {
                 finish();
             }
         });
+        loginOutLayout.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.login_out_layout:
+                AppManager.getAppManager().AppExit(this);
+                break;
+        }
     }
 }
