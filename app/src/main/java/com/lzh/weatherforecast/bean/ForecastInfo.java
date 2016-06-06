@@ -5,97 +5,11 @@ package com.lzh.weatherforecast.bean;
  */
 public class ForecastInfo {
 
-    /**
-     * city : 北京
-     * city_en : beijing
-     * cityid : 101010100
-     * date :
-     * date_y : 2016年05月09日
-     * fchh : 08
-     * fl1 : 小于3级
-     * fl2 : 小于3级
-     * fl3 : 3-4级转小于3级
-     * fl4 : 3-4级转小于3级
-     * fl5 : 小于3级
-     * fl6 : 微风
-     * fx1 : 微风
-     * fx2 : 微风
-     * img1 :
-     * img10 :
-     * img11 :
-     * img12 :
-     * img2 :
-     * img3 :
-     * img4 :
-     * img5 :
-     * img6 :
-     * img7 :
-     * img8 :
-     * img9 :
-     * img_single :
-     * img_title1 : 小雨
-     * img_title10 : 多云
-     * img_title11 : 晴
-     * img_title12 : 晴
-     * img_title2 : 多云
-     * img_title3 : 晴
-     * img_title4 : 多云
-     * img_title5 : 多云
-     * img_title6 : 阴
-     * img_title7 : 阵雨
-     * img_title8 : 晴
-     * img_title9 : 晴
-     * img_title_single :
-     * index : 较舒适
-     * index48 :
-     * index48_d :
-     * index48_uv :
-     * index_ag : 易发
-     * index_cl : 较不宜
-     * index_co : 舒适
-     * index_d :
-     * index_ls : 不宜
-     * index_tr : 适宜
-     * index_uv : 最弱
-     * index_xc : 不宜
-     * st1 :
-     * st2 :
-     * st3 :
-     * st4 :
-     * st5 :
-     * st6 :
-     * temp1 : 22℃~12℃
-     * temp2 : 27℃~16℃
-     * temp3 : 30℃~19℃
-     * temp4 : 25℃~14℃
-     * temp5 : 24℃~14℃
-     * temp6 : 0℃~0℃
-     * tempF1 :
-     * tempF2 :
-     * tempF3 :
-     * tempF4 :
-     * tempF5 :
-     * tempF6 :
-     * weather1 : 小雨转多云
-     * weather2 : 晴转多云
-     * weather3 : 多云转阴
-     * weather4 : 阵雨转晴
-     * weather5 : 晴转多云
-     * weather6 : 晴
-     * week : 星期二
-     * wind1 : 微风
-     * wind2 : 微风
-     * wind3 : 南风转无持续风向
-     * wind4 : 北风转无持续风向
-     * wind5 : 微风
-     * wind6 : 微风
-     */
-
-    public String city;
-    public String city_en;
-    public String cityid;
+    public String city;//城市名
+    public String city_en;//城市英文名
+    public String cityid;//cityid
     public String date;
-    public String date_y;
+    public String date_y;//日期
     public String fchh;
     public String fl1;
     public String fl2;
@@ -105,14 +19,14 @@ public class ForecastInfo {
     public String fl6;
     public String fx1;
     public String fx2;
-    public String img1;
+    public String img1;//当天的天气对应的图片的名字
     public String img10;
     public String img11;
     public String img12;
-    public String img2;
-    public String img3;
-    public String img4;
-    public String img5;
+    public String img2;//第二天天气对应的图片的名字
+    public String img3;//第三天天气对应的图片的名字
+    public String img4;//第四天天气对应的图片的名字
+    public String img5;//第五天天气对应的图片的名字
     public String img6;
     public String img7;
     public String img8;
@@ -149,11 +63,11 @@ public class ForecastInfo {
     public String st4;
     public String st5;
     public String st6;
-    public String temp1;
-    public String temp2;
-    public String temp3;
-    public String temp4;
-    public String temp5;
+    public String temp1;//当天的温度范围
+    public String temp2;//第二天的温度范围
+    public String temp3;//第三天的温度范围
+    public String temp4;//第四天的温度范围
+    public String temp5;//第五天的温度范围
     public String temp6;
     public String tempF1;
     public String tempF2;
@@ -161,18 +75,18 @@ public class ForecastInfo {
     public String tempF4;
     public String tempF5;
     public String tempF6;
-    public String weather1;
-    public String weather2;
-    public String weather3;
-    public String weather4;
-    public String weather5;
+    public String weather1;//当天的天气描述如：多云转阵雨
+    public String weather2;//第二天天气描述
+    public String weather3;//第三天天气描述
+    public String weather4;//第四天天气描述
+    public String weather5;//第五天天气描述
     public String weather6;
     public String week;
-    public String wind1;
-    public String wind2;
-    public String wind3;
-    public String wind4;
-    public String wind5;
+    public String wind1;//当天风向
+    public String wind2;//第二天风向
+    public String wind3;//第三天风向
+    public String wind4;//第四天风向
+    public String wind5;//第四天风向
     public String wind6;
 
     public ForecastInfo(String city, String city_en, String cityid, String date, String date_y, String fchh, String fl1, String fl2, String fl3, String fl4, String fl5, String fl6, String fx2, String fx1, String img1, String img10, String img11, String img12, String img2, String img3, String img4, String img5, String img6, String img7, String img8, String img9, String img_single, String img_title1, String img_title10, String img_title11, String img_title12, String img_title2, String img_title3, String img_title4, String img_title5, String img_title6, String img_title7, String img_title8, String img_title9, String img_title_single, String index, String index48, String index48_d, String index48_uv, String index_ag, String index_cl, String index_co, String index_d, String index_ls, String index_tr, String index_uv, String index_xc, String st1, String st2, String st3, String st4, String st5, String st6, String temp1, String temp2, String temp3, String temp4, String temp5, String temp6, String tempF1, String tempF2, String tempF3, String tempF4, String tempF5, String tempF6, String weather1, String weather2, String weather3, String weather4, String weather5, String weather6, String week, String wind1, String wind2, String wind3, String wind4, String wind5, String wind6) {

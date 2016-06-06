@@ -18,15 +18,15 @@ public class AqiInfo {
      * spot :
      */
 
-    public String city;
-    public String city_id;
-    public String pub_time;
+    public String city;//城市名
+    public String city_id;//城市id
+    public String pub_time;//天气预报推出的时间
     public String aqi;
-    public String pm25;
-    public String pm10;
+    public String pm25;//pm25的值
+    public String pm10;//pm10的值
     public String so2;
     public String no2;
-    public String src;
+    public String src;//信息来源
     public String spot;
 
     public AqiInfo(String city, String spot, String so2, String pm10, String pm25, String pub_time, String city_id, String aqi, String no2, String src) {

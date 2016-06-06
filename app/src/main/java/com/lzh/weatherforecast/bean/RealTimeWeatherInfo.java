@@ -27,8 +27,8 @@ public class RealTimeWeatherInfo {
     public String cityid;
     public String isRadar;
     public String radar;
-    public String temp;
-    public String time;
+    public String temp;//温度
+    public String time;//时间
     public String weather;
 
     public RealTimeWeatherInfo(String SD, String radar, String cityid, String city, String WSE, String WS, String WD, String isRadar, String temp, String time, String weather) {

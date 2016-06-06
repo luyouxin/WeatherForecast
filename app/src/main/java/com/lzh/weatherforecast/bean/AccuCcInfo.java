@@ -5,27 +5,17 @@ package com.lzh.weatherforecast.bean;
  */
 public class AccuCcInfo {
 
-    /**
-     * EpochTime : 1462756860
-     * LocalObservationDateTime : 2016-05-09T09:21:00+08:00
-     * Pressure : 1012.0
-     * RealFeelTemperature : 21.1
-     * RelativeHumidity : 52
-     * UVIndex : 4
-     * Visibility : 11.3
-     * WindDirectionDegrees : 315
-     * WindSpeed : 1.6
-     */
+
 
     public String EpochTime;
     public String LocalObservationDateTime;
-    public String Pressure;
-    public String RealFeelTemperature;
-    public String RelativeHumidity;
-    public String UVIndex;
-    public String Visibility;
-    public String WindDirectionDegrees;
-    public String WindSpeed;
+    public String Pressure; //气压
+    public String RealFeelTemperature;//体感温度
+    public String RelativeHumidity;//相对湿度
+    public String UVIndex;//紫外线强度
+    public String Visibility;//可见度，单位KM
+    public String WindDirectionDegrees;//风向程度，这个不确定
+    public String WindSpeed;//风速
 
     public AccuCcInfo(String epochTime, String windSpeed, String windDirectionDegrees, String visibility, String UVIndex, String relativeHumidity, String realFeelTemperature, String pressure, String localObservationDateTime) {
         EpochTime = epochTime;

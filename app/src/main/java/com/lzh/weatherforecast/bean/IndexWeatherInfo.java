@@ -9,7 +9,7 @@ public class IndexWeatherInfo {
      * code : fs
      * details : 属弱紫外辐射天气，长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。
      * index : 弱
-     * name : 防晒指数
+     * name : 防晒指数、穿衣指数、运动指数等信息的介绍
      * otherName :
      */
 

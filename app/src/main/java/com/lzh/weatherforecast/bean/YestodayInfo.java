@@ -5,37 +5,21 @@ package com.lzh.weatherforecast.bean;
  */
 public class YestodayInfo {
 
-    /**
-     * cityCode : 101010100
-     * date : 2016-05-08
-     * humidityMax : 55
-     * humidityMin : 29
-     * precipitationMax : 0
-     * precipitationMin : 0
-     * tempMax : 26
-     * tempMin : 12
-     * weatherEnd : 多云
-     * weatherStart : 晴
-     * windDirectionEnd : 西南风
-     * windDirectionStart : 南风
-     * windMax : 4
-     * windMin : 0
-     */
 
-    public String cityCode;
-    public String date;
-    public String humidityMax;
-    public String humidityMin;
+    public String cityCode;//城市id
+    public String date;//日期
+    public String humidityMax;//最大湿度
+    public String humidityMin;//最小湿度
     public String precipitationMax;
     public String precipitationMin;
-    public String tempMax;
-    public String tempMin;
-    public String weatherEnd;
-    public String weatherStart;
-    public String windDirectionEnd;
-    public String windDirectionStart;
-    public String windMax;
-    public String windMin;
+    public String tempMax;//最高温度
+    public String tempMin;//最低温度
+    public String weatherEnd;//结束的天气
+    public String weatherStart;//开始的天气
+    public String windDirectionEnd;//结束的风向
+    public String windDirectionStart;//开始的风向
+    public String windMax;//最大风速
+    public String windMin;//最小风速
 
     public YestodayInfo(String cityCode, String windMin, String windMax, String windDirectionStart, String windDirectionEnd, String weatherStart, String weatherEnd, String tempMin, String tempMax, String precipitationMin, String precipitationMax, String humidityMin, String humidityMax, String date) {
         this.cityCode = cityCode;
